@@ -1,0 +1,75 @@
+<div class="card" *ngIf="task">
+  <div class="card-header">
+    Task
+  </div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item list-group-item-action">
+        <div class="row">
+          <div class="col-sm-4"><strong>Id:</strong></div>
+          <div class="col-sm-8">{{task.id}}</div>
+        </div>
+      </li>
+      <li class="list-group-item list-group-item-action">
+        <div class="row">
+          <div class="col-sm-4"><strong>Name:</strong></div>
+          <div class="col-sm-8">
+            <span (click)="editMode = true" *ngIf="!editMode">{{task.name}}</span>
+            <div class="input-group" *ngIf="editMode">
+              <input
+                #newTaskName
+                type="text"
+                class="form-control"
+                [(ngModel)]="task.name">
+              <div class="input-group-append">
+                <button
+                  class="btn btn-outline-primary"
+                  type="button"
+                  (click)="updateName(newTaskName.value)">Update</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item list-group-item-action">
+        <div class="row">
+          <div class="col-sm-4"><strong>Description:</strong></div>
+          <div class="col-sm-8">{{task.description}}</div>
+        </div>
+      </li>
+      <li class="list-group-item list-group-item-action">
+        <div class="row">
+          <div class="col-sm-4"><strong>Tags:</strong></div>
+          <div class="col-sm-8">{{task.tags}}</div>
+        </div>
+      </li>
+      <li class="list-group-item list-group-item-action">
+        <div class="row">
+          <div class="col-sm-4"><strong>Actual effort:</strong></div>
+          <div class="col-sm-8">{{task.actual_effort}}</div>
+        </div>
+      </li>
+      <li class="list-group-item list-group-item-action">
+        <div class="row">
+          <div class="col-sm-4"><strong>Estimated effort:</strong></div>
+          <div class="col-sm-8">{{task.estimated_effort}}</div>
+        </div>
+      </li>
+      <li class="list-group-item list-group-item-action">
+        <div class="row">
+          <div class="col-sm-4"><strong>Creation date:</strong></div>
+          <div class="col-sm-8">{{task.creation_date | date:'HH:mm, dd MMM yyyy'}}</div>
+        </div>
+      </li>
+      <li class="list-group-item list-group-item-action">
+        <div class="row">
+          <div class="col-sm-4"><strong>Due date:</strong></div>
+          <div class="col-sm-8">{{task.due_date | date:'HH:mm, dd MMM yyyy'}}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<hr>
+<button (click)="goBack()">go back</button>

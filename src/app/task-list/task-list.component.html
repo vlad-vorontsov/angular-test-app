@@ -10,7 +10,11 @@
   </thead>
   <tbody>
   <tr *ngFor="let task of tasks">
-    <td><span [ngClass]="{'high-priority' : task.is_high_priority}">{{task.name}}</span></td>
+    <td>
+      <a routerLink="/task/{{task.id}}">
+        <span [ngClass]="{'high-priority' : task.is_high_priority}">{{task.name}}</span>
+      </a>
+    </td>
     <td>{{task.tags}}</td>
     <td>{{task.actual_effort}}</td>
     <td>{{task.estimated_effort}}</td>
