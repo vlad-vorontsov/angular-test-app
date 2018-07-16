@@ -39,6 +39,6 @@ export class TaskComponent implements OnInit {
 
   updateName(updatedName) {
     this.editMode = false;
-    this.taskService.updateTaskName({id: this.task.id, name: updatedName});
+    this.taskService.updateTaskName(this.task.id, updatedName);
   }
 }

@@ -14,23 +14,23 @@ export class TaskService {
   constructor(private http: HttpClient) {
   }
 
-  public fetchTasks(): Observable<any> {
+  public fetchTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(this.tasksUrl)
       .pipe(
         map((tasks: Task[]) => tasks.filter(task => task.obj_status === 'active'))
       );
   }
 
-  public fetchTask(id: number): Observable<any> {
+  public fetchTask(id: number): Observable<Task> {
     return this.http.get<Task>(this.tasksUrl)
       .pipe(
         map((tasks: Task[]) => tasks.find(task => task.id === id))
       );
   }
 
-  public updateTaskName(updatedName: { id: number, name: string }) {
-    console.log(updatedName);
-    return this.http.put('https://some-url', updatedName);
+  public updateTaskName(id: number, name: string) {
+    console.log(name);
+    return this.http.put(`https://some-url/tasks/${id}`, { name: name });
   }
 
 }
